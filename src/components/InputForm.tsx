@@ -177,7 +177,7 @@ const InputForm = () => {
                       </Button>
                     </form>
                   </Form>
-                      <p className="w-full text-center mt-3 text-xs">code by <Link href="mdtaquiimam.vercel.app" target="_blank" className="text-primary">Md Taqui Imam</Link></p>
+                      <p className="w-full text-center mt-3 text-xs">code by <Link href="https://mdtaquiimam.vercel.app" target="_blank" className="text-primary">Md Taqui Imam</Link></p>
                 </CardContent>
                 </Card>
             )
