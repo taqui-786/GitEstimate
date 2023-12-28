@@ -88,7 +88,7 @@ const elementRef = useRef<HTMLDivElement | null>(null);
             </div>
             {/* FOOTER  */}
             <div className="mt-3 py-2 px-2 sm:px-5 w-full flex h-[100px] relative">
-               <Image src={`https://ghchart.rshah.org/taqui-786`} alt="Contrbuition Graph" fill={true} loading="eager" priority />
+               <Image src={`https://ghchart.rshah.org/${username}`} alt="Contrbuition Graph" fill={true} loading="eager" priority />
           </div>
           <span className="w-full text-center mt-2 text-xs">Get your&#39;s at gitestimate.vercel.app</span>
           </div>
