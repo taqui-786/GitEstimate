@@ -1,4 +1,4 @@
-## GitEst - Github Estimate Generator
+## GitEstimate - Github Estimate Generator
 
 
 ## Tech Stack 
