@@ -67,10 +67,14 @@ const InputForm = () => {
         `https://api.github.com/users/${values.username}`
       );
       const finalData = await data.json();
-      
         if(finalData?.message === 'Not Found'){
           form.reset()
-          return toast.error('Sorry, No User Found !' ,{  style: {
+          return toast.error('Sorry, No Username Found !' ,{  style: {
+            background: 'crimson', color: 'white'
+          }, position: 'top-center'})
+        }else if(finalData?.type === "Organization"){
+          form.reset()
+          return toast.error('Sorry, Organisation username not allowed!' ,{  style: {
             background: 'crimson', color: 'white'
           }, position: 'top-center'})
         }
@@ -107,7 +111,7 @@ const InputForm = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error('Something went wrong !' ,{  style: {
+      toast.error('Rate Limit Reached! Try after some time' ,{  style: {
         background: 'crimson', color: 'white'
       }, position: 'top-center'})
     }finally{
