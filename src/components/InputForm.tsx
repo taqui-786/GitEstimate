@@ -63,10 +63,12 @@ const InputForm = () => {
     setLoading(true);
     try {
       if (values.username === "") return;
+      const myUsername : string = values.username.includes("@") ? values.username.replace('@', '') : values.username
       const data = await fetch(
-        `https://api.github.com/users/${values.username}`
+        `https://api.github.com/users/${myUsername}`
       );
       const finalData = await data.json();
+      
         if(finalData?.message === 'Not Found'){
           form.reset()
           return toast.error('Sorry, No Username Found !' ,{  style: {
@@ -79,7 +81,7 @@ const InputForm = () => {
           }, position: 'top-center'})
         }
       const getStar = await fetch(
-        `https://api.github.com/users/${values.username}/repos?per_page=1000`
+        `https://api.github.com/users/${myUsername}/repos?per_page=1000`
       );
       const storeStars: Array<any> = await getStar.json();
       // Calculate the total stars
@@ -89,7 +91,7 @@ const InputForm = () => {
           0
         );
 
-        const hereis = await fetchDataForAllYears(values.username);
+        const hereis = await fetchDataForAllYears(myUsername);
 
 
         const createData = {
