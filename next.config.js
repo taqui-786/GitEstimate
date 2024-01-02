@@ -1,16 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "ghchart.rshah.org",
-      },
-    ],
-    formats: ["image/avif", "image/webp"],
-    loader: "default",
+    unoptimized: true,
     
-    dangerouslyAllowSVG: true,
   },
 };
 

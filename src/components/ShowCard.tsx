@@ -7,6 +7,7 @@ import Image from 'next/image';
 import {Loader2} from 'lucide-react'
 import { toast } from 'sonner';
 
+
 interface ShowCardProps {
     avatar?:string,
     fullname?:string,
@@ -32,12 +33,15 @@ const elementRef = useRef<HTMLDivElement | null>(null);
     toPng(elementRef.current , { cacheBust: false })
       .then((dataUrl) => {
         const link = document.createElement("a");
-        link.download = "githubWorth.png";
+        link.download = "gitEstimate.png";
         link.href = dataUrl;
         link.click();
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
+        toast.error('Sorry, Downloading limit reached! Max 1000 images' ,{  style: {
+          background: 'crimson', color: 'white'
+        }, position: 'top-center'})
       }).finally(()=>{
         setLoading(false)
       });
@@ -49,7 +53,7 @@ const elementRef = useRef<HTMLDivElement | null>(null);
          console.error("Error converting to image:", error);
       }
   };
- 
+
   return (
    <>
    <div className="flex flex-col bg-white max-w-[520px] p-1 sm:p-5 rounded-md shadow-md border bg-card"  ref={elementRef} >
@@ -88,7 +92,11 @@ const elementRef = useRef<HTMLDivElement | null>(null);
             </div>
             {/* FOOTER  */}
             <div className="mt-3 py-2 px-2 sm:px-5 w-full flex h-[100px] relative">
-               <Image src={`https://ghchart.rshah.org/${username}`} alt="Contribution Graph" fill={true} loading="eager" priority />
+             
+                {/* 🔴 SUGGESTION -> Due to my vercel free tire end of 1000 images  unoptimized= true 👇   */}
+
+               <Image src={`https://ghchart.rshah.org/${username}`} alt="Contribution Graph" fill={true} loading="eager" priority  unoptimized={true}/>
+          
           </div>
           <span className="w-full text-center mt-2 text-xs">Get your&#39;s at gitestimate.vercel.app</span>
           </div>
